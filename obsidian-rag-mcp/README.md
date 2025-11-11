@@ -364,5 +364,5 @@ MIT License - 자유롭게 사용하세요!
 
 ---
 
-**만든 사람**: saisiot
+**만든 사람**: 더배러 타래
 **기술 지원**: Claude Code by Anthropic

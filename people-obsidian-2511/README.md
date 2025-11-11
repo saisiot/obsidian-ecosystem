@@ -224,6 +224,6 @@ MIT
 
 ## 작성자
 
-saisiot
+더배러 타래
 
 🤖 Generated with Claude Code
