@@ -1,0 +1,11 @@
+# Fleet Note Generator (Claude Code CLI Edition)
+# 최소 의존성 버전
+
+# 이미지 처리
+Pillow>=10.0.0
+
+# YAML 파싱 (Fleet Note 프론트매터)
+pyyaml>=6.0.0
+
+# 환경 변수 관리
+python-dotenv>=1.0.0

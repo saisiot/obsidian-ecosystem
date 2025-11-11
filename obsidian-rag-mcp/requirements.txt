@@ -1,0 +1,7 @@
+mcp
+chromadb
+sentence-transformers
+python-frontmatter
+pyyaml
+watchdog
+tiktoken>=0.5.0

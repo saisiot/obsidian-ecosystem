@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 프로젝트 특정
+original_notes/*.jpg
+original_notes/*.jpeg
+original_notes/*.png
+linked_notes/
+generated_notes/
+
+# 로그 파일
+*.log

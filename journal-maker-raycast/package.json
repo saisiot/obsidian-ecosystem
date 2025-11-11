@@ -1,0 +1,50 @@
+{
+  "name": "journal-maker",
+  "title": "Journal Maker",
+  "description": "일기를 작성하고 Journals 폴더에 저장하는 생산성 도구",
+  "icon": "command-icon.png",
+  "author": "your-raycast-username",
+  "license": "MIT",
+  "version": "1.0.0",
+  "commands": [
+    {
+      "name": "create-journal",
+      "title": "Journal Maker",
+      "description": "일기를 작성하고 Journals 폴더에 저장합니다",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "journalPath",
+      "type": "textfield",
+      "required": true,
+      "title": "Journals 폴더 경로",
+      "description": "일기를 저장할 Obsidian Journals 폴더의 절대 경로",
+      "default": "~/Desktop/SecondBrain/02 Journals",
+      "placeholder": "/Users/yourname/Desktop/SecondBrain/02 Journals"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.87.0",
+    "@raycast/utils": "^1.19.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.11",
+    "@types/node": "^20.17.10",
+    "@types/react": "18.2.79",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "ray publish"
+  },
+  "overrides": {
+    "@types/react": "18.2.79"
+  }
+}

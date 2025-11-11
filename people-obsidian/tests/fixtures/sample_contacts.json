@@ -1,0 +1,26 @@
+[
+  {
+    "contact_id": "ABC-123-DEF-456-789",
+    "first_name": "길동",
+    "last_name": "홍",
+    "phone": "010-1234-5678",
+    "email": "hong@example.com",
+    "notes": "250115 점심 미팅. 새 프로젝트 논의\n250110 전화 통화\n241220 연말 인사"
+  },
+  {
+    "contact_id": "XYZ-987-UVW-654-321",
+    "first_name": "John",
+    "last_name": "Doe",
+    "phone": "010-9876-5432",
+    "email": "john@example.com",
+    "notes": "오늘 커피 미팅\n어제 전화함"
+  },
+  {
+    "contact_id": "TEST-111-AAA-222-BBB",
+    "first_name": "영희",
+    "last_name": "김",
+    "phone": "010-1111-2222",
+    "email": "kim@example.com",
+    "notes": "251110 생일날만남\n같이 카페에가서 커피 한잔하고 선물받음\n\n251101 전화로 연락함. 요즘 많이 바쁜듯."
+  }
+]

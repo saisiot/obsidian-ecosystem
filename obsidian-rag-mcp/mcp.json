@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "obsidian-rag": {
+      "command": "python",
+      "args": [
+        "/Users/saisiot/Desktop/python_workshop/obsidian-rag-mcp/src/mcp_server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/Users/saisiot/Desktop/python_workshop/obsidian-rag-mcp"
+      }
+    }
+  }
+}
