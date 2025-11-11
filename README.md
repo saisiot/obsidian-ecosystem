@@ -12,6 +12,7 @@
 ## 📋 목차
 
 - [전체 개요](#-전체-개요)
+- [👶 초보자를 위한 가이드](#-초보자를-위한-가이드)
 - [핵심 기술 소개](#-핵심-기술-소개)
 - [주요 기능](#-주요-기능)
 - [포함된 프로젝트](#-포함된-프로젝트)
@@ -37,6 +38,279 @@
 **중심 허브**: Obsidian Vault (예: `~/Desktop/SecondBrain`)
 
 **핵심 기술**: Claude Code + MCP + 자동화 (LaunchAgent, Automator, Raycast)
+
+---
+
+## 👶 초보자를 위한 가이드
+
+### 이 프로젝트는 누구를 위한 것인가요?
+
+**이런 분들에게 추천합니다:**
+- 📝 **메모를 많이 하는데 정리가 안 되는 분**: 손글씨 메모, 웹 클리핑, 연락처 등이 흩어져 있어 찾기 힘든 분
+- 🤖 **자동화를 좋아하는 분**: 반복 작업을 자동화하고 싶은 분
+- 🧠 **Second Brain을 만들고 싶은 분**: Obsidian으로 개인 지식 관리 시스템을 구축하고 싶은 분
+- 🍎 **macOS 사용자**: 이 프로젝트는 macOS 전용입니다 (LaunchAgent, Raycast 등 활용)
+
+**이런 분들에게는 아직 어려울 수 있습니다:**
+- Windows/Linux 사용자 (macOS 전용 기능 사용)
+- 터미널 사용이 처음이신 분 (하지만 아래 가이드로 충분히 가능!)
+- Obsidian을 한 번도 안 써보신 분 (먼저 Obsidian을 설치하고 사용해보세요)
+
+### AI(LLM)를 활용하여 쉽게 설치하기
+
+**코딩을 모르셔도 괜찮습니다!** Claude Code, Cursor, GitHub Copilot 등의 AI 도구를 활용하면 이 프로젝트를 쉽게 설치하고 사용할 수 있습니다.
+
+#### 1단계: AI 도구 준비하기
+
+다음 중 하나를 선택하세요:
+
+**추천: Claude Code (무료)**
+- 다운로드: https://claude.ai/code
+- 장점: 이 프로젝트와 호환성이 가장 좋음 (Claude로 개발됨)
+- 장점: 파일 읽기/쓰기, 터미널 실행 등 모든 작업 자동화
+
+**대안: Cursor (유료)**
+- 다운로드: https://cursor.sh
+- 장점: VS Code 기반으로 익숙함
+- 단점: 일부 수동 작업 필요
+
+**대안: GitHub Copilot in VS Code (유료)**
+- VS Code Extension 설치
+- 단점: 대부분 수동 작업 필요
+
+#### 2단계: 저장소 클론하기
+
+터미널을 열고 다음 명령어를 실행하세요:
+
+```bash
+# 원하는 위치로 이동 (예: 홈 디렉토리)
+cd ~
+
+# 저장소 클론
+git clone https://github.com/saisiot/obsidian-ecosystem.git
+cd obsidian-ecosystem
+```
+
+#### 3단계: AI에게 프로젝트 분석 요청하기
+
+**Claude Code 사용 시:**
+
+Claude Code를 열고 다음 프롬프트를 사용하세요:
+
+```
+이 Obsidian 에코시스템 프로젝트를 내 macOS 시스템에 설치하고 싶어.
+나는 Obsidian Vault를 ~/Documents/MyVault에 두고 있어.
+
+다음을 도와줘:
+1. 전체 프로젝트 구조를 분석하고 설명해줘
+2. 각 프로젝트가 무엇을 하는지 간단히 요약해줘
+3. 내가 먼저 설치해야 할 프로젝트가 뭔지 추천해줘
+4. 설치 순서와 필요한 설정을 알려줘
+
+참고로 나는:
+- Python 3.11 설치됨
+- Obsidian 사용 중
+- Raycast 설치 안 됨 (필요하면 설치할 예정)
+- Claude Desktop 설치 안 됨 (필요하면 설치할 예정)
+```
+
+**AI가 해주는 일:**
+- ✅ README.md 파일 읽고 분석
+- ✅ 각 프로젝트 폴더 구조 파악
+- ✅ .env.example 파일 확인
+- ✅ 설치 순서 추천
+- ✅ 필요한 의존성 확인
+
+#### 4단계: 개별 프로젝트 설치하기
+
+원하는 프로젝트를 선택한 후, AI에게 설치를 요청하세요.
+
+**예시: fleet-note-taker 설치**
+
+```
+fleet-note-taker 프로젝트를 설치하고 싶어.
+
+내 환경:
+- Obsidian Vault: ~/Documents/MyVault
+- 입력 폴더: ~/Documents/Inbox (여기에 이미지/메모 파일을 넣을 거야)
+- 출력 폴더: ~/Documents/MyVault/Fleet (Fleet Note가 저장될 위치)
+
+다음을 해줘:
+1. .env.example을 복사해서 .env 만들기
+2. .env 파일에 내 경로 설정하기
+3. Python 가상환경 만들고 의존성 설치하기
+4. 필요한 권한 설정 안내하기
+5. 테스트 실행해보기
+```
+
+**AI가 해주는 일:**
+- ✅ `.env.example` 복사 → `.env` 생성
+- ✅ 경로 자동 수정 (여러분의 경로로)
+- ✅ `python -m venv venv` 실행
+- ✅ `pip install -r requirements.txt` 실행
+- ✅ LaunchAgent plist 파일 수정 (경로 변경)
+- ✅ 권한 설정 가이드 제공
+- ✅ 테스트 파일로 실행 확인
+
+#### 5단계: 프로젝트별 설정 커스터마이징
+
+각 프로젝트의 설정을 변경하고 싶을 때:
+
+**예시: people-obsidian 설정 변경**
+
+```
+people-obsidian 프로젝트 설정을 변경하고 싶어.
+
+현재 설정:
+- 연락처 노트 폴더: ~/Documents/MyVault/People
+- 동기화 시간: 매일 아침 9시로 변경하고 싶음
+
+다음을 해줘:
+1. .env 파일에서 PEOPLE_FOLDER 경로 변경
+2. LaunchAgent plist 파일에서 실행 시간 변경
+3. 변경사항 적용하기
+4. 로그 확인해서 제대로 작동하는지 확인하기
+```
+
+**AI가 해주는 일:**
+- ✅ `.env` 파일 수정
+- ✅ `com.user.people-obsidian.plist` 파일에서 시간 변경
+- ✅ `launchctl unload` → `launchctl load` 재시작
+- ✅ 로그 파일 확인 (`tail -f ~/Desktop/SecondBrain/07 people/sync.log`)
+
+#### 6단계: 문제 해결하기
+
+문제가 발생했을 때:
+
+**예시: 에러 발생 시**
+
+```
+fleet-note-taker를 실행했는데 다음 에러가 발생했어:
+
+[에러 메시지 복사-붙여넣기]
+
+이 에러의 원인이 뭐고 어떻게 해결할 수 있어?
+
+추가 정보:
+- 로그 파일: /tmp/fleet_note_generator.log
+- macOS 버전: Sonoma 14.5
+- Python 버전: 3.11.5
+```
+
+**AI가 해주는 일:**
+- ✅ 에러 메시지 분석
+- ✅ 원인 파악 (권한 문제, 경로 문제, 의존성 문제 등)
+- ✅ 해결 방법 제시
+- ✅ 필요한 명령어 실행
+- ✅ 로그 파일 확인
+
+### 자주 사용하는 프롬프트 예시
+
+#### 전체 시스템 이해하기
+
+```
+이 Obsidian 에코시스템의 전체 아키텍처를 설명해줘.
+특히 다음을 알고 싶어:
+
+1. 각 프로젝트가 어떻게 연결되어 있는지
+2. 데이터가 어떻게 흐르는지 (입력 → 처리 → 출력)
+3. 어떤 프로젝트가 다른 프로젝트에 의존하는지
+4. 처음 시작할 때 어떤 순서로 설치하면 좋을지
+
+시각적으로 설명해주면 더 좋아!
+```
+
+#### 특정 기능 커스터마이징
+
+```
+fleet-note-maker-raycast의 템플릿을 수정하고 싶어.
+
+현재 템플릿:
+# 제목
+
+#태그
+
+내용
+
+변경하고 싶은 템플릿:
+---
+title: 제목
+created: 2025-11-11
+tags: [태그1, 태그2]
+---
+
+# 제목
+
+## 내용
+
+본문
+
+## 참고 링크
+
+
+어떤 파일을 수정해야 하고, 어떻게 변경하면 돼?
+코드도 수정해줘.
+```
+
+#### LaunchAgent 디버깅
+
+```
+people-obsidian LaunchAgent가 제대로 작동하지 않아.
+
+확인한 것:
+- launchctl list | grep people: 목록에 없음
+- plist 파일 위치: ~/Library/LaunchAgents/com.user.people-obsidian.plist
+- 로그 파일: 생성되지 않음
+
+다음을 도와줘:
+1. LaunchAgent가 제대로 로드되었는지 확인하기
+2. 로드되지 않았다면 원인 찾기
+3. 수동으로 실행해서 스크립트 자체는 작동하는지 확인하기
+4. 권한 문제가 있는지 확인하기
+```
+
+#### 여러 프로젝트 통합
+
+```
+현재 fleet-note-taker와 obsidian-rag-mcp를 사용 중이야.
+
+fleet-note-taker로 생성된 노트를 obsidian-rag-mcp가 자동으로 인덱싱하게 하고 싶어.
+
+필요한 설정:
+1. fleet-note-taker 출력 폴더: ~/Documents/MyVault/Fleet
+2. obsidian-rag-mcp Vault 경로: ~/Documents/MyVault
+
+다음을 확인해줘:
+1. 두 프로젝트가 같은 Vault를 보고 있는지
+2. obsidian-rag-mcp가 Fleet 폴더를 자동으로 인덱싱하는지
+3. 실시간 업데이트가 작동하는지
+4. 테스트 노트를 만들어서 검색되는지 확인해줘
+```
+
+### 처음 시작하는 분들을 위한 추천 순서
+
+**1단계: 검색 엔진부터 (선택사항)**
+- **obsidian-rag-mcp**: 먼저 설치하면 나중에 생성된 노트들을 바로 검색 가능
+- Claude Desktop이 필요하므로 선택사항
+
+**2단계: 간단한 입력 도구**
+- **fleet-note-maker-raycast** 또는 **journal-maker-raycast**: Raycast로 빠른 메모/일기 작성
+- 수동 트리거라 부담 없음
+
+**3단계: 자동화 도구 추가**
+- **fleet-note-taker**: 이미지 메모 자동 변환
+- **people-obsidian**: 연락처 자동 동기화
+
+**4단계: 고급 기능**
+- **obsidian-scrap**: 웹 클리핑 자동 정리
+
+### 도움이 필요하신가요?
+
+- **GitHub Issues**: 버그 리포트, 기능 제안
+- **README 문서**: 각 프로젝트 폴더의 상세 가이드
+- **AI 도구 활용**: Claude Code, Cursor 등으로 실시간 도움 받기
+
+**기억하세요**: 코딩을 모르셔도 괜찮습니다! AI 도구가 대부분의 작업을 도와줍니다. 위의 프롬프트 예시를 복사해서 사용하시면 됩니다.
 
 ---
 
