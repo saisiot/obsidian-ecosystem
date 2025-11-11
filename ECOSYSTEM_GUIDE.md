@@ -4,6 +4,8 @@
 
 ## 📋 목차
 
+- [전체 개요](#-전체-개요)
+- [핵심 기술 소개](#-핵심-기술-소개)
 - [프로젝트 구조](#-프로젝트-구조)
 - [프로젝트별 상세 정보](#-프로젝트별-상세-정보)
 - [핵심 통합 포인트](#-핵심-통합-포인트)
@@ -20,6 +22,139 @@
 **중심 허브**: `/Users/saisiot/Desktop/SecondBrain` (Obsidian Vault)
 
 **핵심 기술**: Claude Code + MCP + 자동화 (LaunchAgent, Automator, Raycast)
+
+---
+
+## 💡 핵심 기술 소개
+
+이 에코시스템은 macOS의 강력한 자동화 기능과 현대적인 생산성 도구들을 활용합니다. 처음 접하시는 분들을 위해 핵심 기술들을 간단히 소개합니다.
+
+### LaunchAgent란?
+
+**macOS의 백그라운드 자동화 시스템**입니다. Windows의 "작업 스케줄러"나 Linux의 "cron"과 유사한 역할을 합니다.
+
+**주요 특징:**
+- 🔄 **백그라운드 실행**: 사용자가 로그인하면 자동으로 시작
+- ⏰ **예약 실행**: 특정 시간에 자동 실행 (예: 매일 아침 7:30)
+- 👁️ **폴더 감시**: 특정 폴더를 실시간으로 모니터링하여 파일 변경 시 자동 처리
+- 💻 **시스템 통합**: macOS와 완벽하게 통합되어 안정적으로 작동
+
+**이 에코시스템에서의 활용:**
+- **people-obsidian**: 매일 아침 7:30에 자동으로 연락처 동기화
+- **fleet-note-taker**: 메모 폴더를 실시간 감시하여 새 파일이 추가되면 즉시 처리
+- **obsidian-scrap**: 웹 클리핑 폴더를 감시하여 1초 내에 자동 정리
+
+**설정 파일 위치:**
+```bash
+~/Library/LaunchAgents/
+# 예: com.user.people-obsidian.plist
+```
+
+**제어 명령어:**
+```bash
+# 시작
+launchctl load ~/Library/LaunchAgents/com.user.example.plist
+
+# 중지
+launchctl unload ~/Library/LaunchAgents/com.user.example.plist
+
+# 상태 확인
+launchctl list | grep example
+```
+
+### Raycast란?
+
+**macOS용 생산성 런처 애플리케이션**입니다. Spotlight나 Alfred의 강력한 대안입니다.
+
+**주요 특징:**
+- ⚡ **빠른 실행**: `⌘ + Space`로 즉시 앱, 파일, 명령어 실행
+- 🎨 **모던한 UI**: 아름답고 직관적인 인터페이스
+- 🔌 **확장 시스템**: Extension을 통해 기능 무한 확장
+- 🆓 **무료**: 기본 기능은 완전 무료 (Pro는 유료)
+- 🚀 **빠른 속도**: 네이티브 앱으로 매우 빠름
+
+**기본 기능:**
+- 앱 실행: "Chrome" 입력 → Chrome 실행
+- 파일 검색: "내 문서.pdf" 입력 → 파일 열기
+- 계산기: "123 + 456" 입력 → 즉시 계산
+- 클립보드 히스토리: 이전에 복사한 내용 검색
+- 윈도우 관리: 창 크기/위치 조절
+- 스니펫: 자주 쓰는 텍스트 단축키 입력
+
+**설치:**
+```bash
+# 공식 사이트에서 다운로드
+https://raycast.com
+
+# 또는 Homebrew로 설치
+brew install --cask raycast
+```
+
+### Raycast Extension이란?
+
+**Raycast의 기능을 확장하는 플러그인**입니다. 마치 VS Code의 Extension이나 Chrome의 확장 프로그램과 같은 개념입니다.
+
+**특징:**
+- 📦 **TypeScript 기반**: React + TypeScript로 개발
+- 🏪 **Store 제공**: 공식 Extension Store에서 다운로드 가능
+- 🛠️ **개발자 친화적**: 로컬에서 직접 개발 가능
+- 🎯 **특화 기능**: 각 Extension이 특정 작업에 특화
+
+**Extension 예시:**
+- **GitHub**: 이슈/PR 검색, 생성
+- **Notion**: 노트 검색, 생성
+- **Todoist**: 할 일 추가, 관리
+- **Spotify**: 음악 재생 제어
+- **Custom Scripts**: 개인 맞춤 스크립트 실행
+
+**이 에코시스템의 Raycast Extensions:**
+
+**1. Fleet Note Maker** (`fleet-note-maker-raycast`)
+- **목적**: 빠른 메모 작성
+- **사용법**:
+  - `⌘ + Space` → "Fleet Note Maker" 검색
+  - 제목, 본문, 태그 입력
+  - `⌘ + Enter`로 저장
+- **출력**: Obsidian Fleet 폴더에 자동 저장
+- **장점**: Obsidian을 열지 않고도 즉시 메모 작성
+
+**2. Journal Maker** (`journal-maker-raycast`)
+- **목적**: 일기 작성
+- **사용법**:
+  - `⌘ + Space` → "Journal Maker" 검색
+  - 날짜(YYYYMMDD) + 제목 + 내용 입력
+  - `⌘ + Enter`로 저장
+- **출력**: Obsidian Journals 폴더에 자동 저장
+- **장점**: 일기 작성 루틴을 습관화하기 쉬움
+
+**개발 모드 사용:**
+```bash
+# Extension 폴더로 이동
+cd fleet-note-maker-raycast
+
+# 개발 모드로 Raycast에 연결
+npm run dev
+
+# Raycast가 자동으로 Extension 인식
+```
+
+**설정 방법:**
+1. Raycast 열기 (`⌘ + Space`)
+2. "Extensions" 검색
+3. 설치된 Extension 찾기
+4. 저장 경로 등 설정 변경
+5. 단축키(Hotkey) 설정 가능
+
+**왜 Raycast를 사용하나요?**
+
+| 기능 | Obsidian 직접 사용 | Raycast Extension |
+|------|-------------------|-------------------|
+| 속도 | Obsidian 실행 → 폴더 선택 → 파일 생성 | `⌘ + Space` → 입력 → 완료 |
+| 중단 | Obsidian으로 컨텍스트 전환 | 현재 작업 중단 없이 메모 |
+| 템플릿 | 수동으로 템플릿 선택 | 자동으로 템플릿 적용 |
+| 학습 곡선 | Obsidian 사용법 학습 필요 | 간단한 입력 폼만 사용 |
+
+**결론**: LaunchAgent는 "자동 처리"를, Raycast는 "빠른 수동 입력"을 담당합니다.
 
 ---
 
