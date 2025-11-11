@@ -1,5 +1,10 @@
 # Obsidian SecondBrain 생산성 에코시스템
 
+<div align="center">
+  <img src="assets/ecosystem-banner.png" alt="Obsidian Ecosystem" width="600"/>
+  <p><em>by tare</em></p>
+</div>
+
 > macOS와 Obsidian을 활용한 완전 자동화된 지식 관리 시스템
 
 다양한 입력 소스(이미지, 웹 클리핑, 연락처, 수동 입력)를 Obsidian Vault로 자동 통합하고, AI 기반 검색을 제공하는 생산성 시스템입니다.
